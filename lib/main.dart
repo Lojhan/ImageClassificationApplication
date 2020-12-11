@@ -115,16 +115,23 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Stack(
           children: [
             CameraPreview(controller),
-            Center(
-              child: FlatButton.icon(
-                  label: Text('data'),
-                  icon: Icon(Icons.camera),
-                  onPressed: () async => {
-                        imagePath = await takePicture(),
-                        title = await getPlantInfo(imagePath),
-                        setState(() {}),
-                        _showMyImage(title, imagePath, context),
-                      }),
+            Container(
+              padding: EdgeInsets.all(10),
+              alignment: Alignment.bottomCenter,
+              child: Card(
+                shape: CircleBorder(),
+                child: IconButton(
+                    color: Colors.blue,
+                    icon: Icon(
+                      Icons.camera,
+                    ),
+                    onPressed: () async => {
+                          imagePath = await takePicture(),
+                          title = await getPlantInfo(imagePath),
+                          setState(() {}),
+                          _showMyImage(title, imagePath, context),
+                        }),
+              ),
             ),
           ],
         ));
